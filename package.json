@@ -1,0 +1,12 @@
+{
+  "name": "act_starwars_alicia_ros",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.21.0",
+    "ejs": "^7.0.2",
+    "express": "^5.3.0",
+    "method-override": "^3.0.0"
+  }
+}

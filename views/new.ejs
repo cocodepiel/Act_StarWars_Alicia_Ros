@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo personaje</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Nuevo personaje</h1>
+    <form action="/starwars" method="POST">
+        <label>Nombre <input type="text" name="name" required></label>
+        <label>Altura <input type="text" name="height" required></label>
+        <label>Masa <input type="text" name="mass" required></label>
+        <label>URL de la foto <input type="url" name="photo" placeholder="https://..." required></label>
+        <div class="acciones">
+            <button type="submit" class="btn">Guardar</button>
+            <a href="/starwars">Cancelar</a>
+        </div>
+    </form>
+</body>
+</html>

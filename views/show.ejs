@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= personaje.name %></title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1><%= personaje.name %></h1>
+    <img class="foto" src="<%= personaje.photo %>" alt="<%= personaje.name %>">
+    <p><strong>Altura:</strong> <%= personaje.height %></p>
+    <p><strong>Masa:</strong> <%= personaje.mass %></p>
+
+    <% if (planeta) { %>
+        <h2>Planeta de origen</h2>
+        <p><strong>Nombre:</strong> <%= planeta.name %></p>
+        <p><strong>Periodo de rotación:</strong> <%= planeta.rotation_period %></p>
+        <p><strong>Periodo orbital:</strong> <%= planeta.orbital_period %></p>
+    <% } else { %>
+        <p class="id">No hay datos del planeta.</p>
+    <% } %>
+
+    <div class="acciones">
+        <a class="btn" href="/starwars/<%= personaje.name %>/edit">Editar</a>
+        <form action="/starwars/<%= personaje.name %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn-peligro">Eliminar</button>
+        </form>
+    </div>
+    <p><a href="/starwars">&larr; Volver al listado</a></p>
+</body>
+</html>

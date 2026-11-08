@@ -1,0 +1,224 @@
+/* ============================================================
+   Star Wars · tema Tatooine (claro, arena y dos soles)
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@500;600;700&display=swap");
+
+:root {
+    --arena: #f3e3c3;
+    --arena-oscura: #e2c690;
+    --roca: #8a4b2a;
+    --roca-oscura: #4a2412;
+    --sol: #f2a03d;
+    --sol-2: #e8593b;
+    --papel: #fff8ea;
+    --texto: #3b2415;
+    --radio: 4px;
+}
+
+* { box-sizing: border-box; }
+
+/* ---------- Base: atardecer en el desierto ---------- */
+body {
+    margin: 0 auto;
+    min-height: 100vh;
+    max-width: 980px;
+    padding: 40px 22px 70px;
+    font-family: "Rajdhani", system-ui, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--texto);
+    background:
+        radial-gradient(circle at 78% 8%, #ffd27a 0 34px, #ffb04a55 35px 90px, transparent 91px),
+        radial-gradient(circle at 64% 14%, #ffb892 0 20px, #ff8a6a44 21px 60px, transparent 61px),
+        linear-gradient(180deg, #f7c98b 0%, var(--arena) 38%, var(--arena-oscura) 100%) fixed;
+}
+/* dunas */
+body::after {
+    content: "";
+    position: fixed;
+    inset: auto 0 0 0;
+    height: 140px;
+    z-index: -1;
+    background:
+        radial-gradient(120% 100% at 20% 100%, #c99556 0 60%, transparent 61%),
+        radial-gradient(120% 100% at 85% 100%, #b27c42 0 55%, transparent 56%);
+    opacity: .55;
+}
+
+/* ---------- Títulos ---------- */
+h1, h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    letter-spacing: .08em;
+    color: var(--roca-oscura);
+}
+h1 {
+    font-size: clamp(2.4rem, 7vw, 4rem);
+    margin: 0 0 8px;
+    padding-bottom: 10px;
+    border-bottom: 4px double var(--roca);
+}
+h2 { font-size: 1.8rem; margin: 28px 0 6px; color: var(--roca); }
+
+/* ---------- Enlaces ---------- */
+a {
+    color: var(--roca);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--sol);
+    transition: color .2s, text-decoration-color .2s;
+}
+a:hover { color: var(--sol-2); text-decoration-color: var(--sol-2); }
+
+/* ---------- Formularios: hoja de papel ---------- */
+form {
+    max-width: 460px;
+    margin: 22px 0;
+    padding: 22px 24px;
+    background: var(--papel);
+    border: 2px solid var(--roca);
+    border-radius: var(--radio);
+    box-shadow: 6px 6px 0 var(--roca);
+}
+label {
+    display: block;
+    margin-bottom: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: .85rem;
+    color: var(--roca);
+}
+input[type="text"],
+input[type="url"] {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 9px 4px;
+    font: inherit;
+    font-size: 1.1rem;
+    color: var(--texto);
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid var(--roca);
+    border-radius: 0;
+    transition: border-color .2s, background .2s;
+}
+input:focus {
+    outline: none;
+    border-bottom-color: var(--sol-2);
+    background: #f2a03d22;
+}
+input::placeholder { color: #a98a6e; }
+
+/* buscador en una fila */
+body > form:has(input[name="q"]) { display: flex; align-items: flex-end; gap: 14px; max-width: 560px; }
+body > form:has(input[name="q"]) input { margin-top: 0; flex: 1; }
+
+/* ---------- Botones: sellos de piedra ---------- */
+button, .btn, .btn-peligro {
+    display: inline-block;
+    cursor: pointer;
+    padding: 9px 22px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: .12em;
+    text-decoration: none;
+    color: var(--papel);
+    background: var(--roca);
+    border: 2px solid var(--roca-oscura);
+    border-radius: var(--radio);
+    box-shadow: 3px 3px 0 var(--roca-oscura);
+    transition: transform .1s, box-shadow .1s, background .2s;
+}
+button:hover, .btn:hover {
+    color: var(--papel);
+    background: var(--sol-2);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--roca-oscura);
+}
+button:active, .btn:active, .btn-peligro:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--roca-oscura); }
+.btn-peligro { background: #7a1f1f; border-color: #3d0d0d; box-shadow: 3px 3px 0 #3d0d0d; }
+.btn-peligro:hover { color: #fff; background: #b02a2a; }
+
+.acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 22px; }
+.acciones form { margin: 0; padding: 0; border: 0; box-shadow: none; background: none; max-width: none; }
+
+/* ---------- Galería: fotos tipo polaroid ---------- */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 28px 22px;
+    margin-top: 30px;
+}
+.tarjeta {
+    display: block;
+    padding: 10px 10px 14px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--texto);
+    background: var(--papel);
+    border: 1px solid #d8bf93;
+    box-shadow: 0 6px 14px #4a241233;
+    transform: rotate(-1.5deg);
+    transition: transform .25s, box-shadow .25s;
+}
+.tarjeta:nth-child(even) { transform: rotate(1.5deg); }
+.tarjeta:nth-child(3n) { transform: rotate(-.5deg); }
+.tarjeta img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    filter: sepia(.55) saturate(.9);
+    transition: filter .3s;
+}
+.tarjeta span {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.35rem;
+    letter-spacing: .08em;
+}
+.tarjeta:hover {
+    transform: rotate(0) translateY(-8px) scale(1.04);
+    box-shadow: 0 16px 28px #4a241255;
+    color: var(--sol-2);
+}
+.tarjeta:hover img { filter: none; }
+
+/* ---------- Detalle ---------- */
+.foto {
+    display: block;
+    width: 230px;
+    margin: 20px 0;
+    padding: 8px 8px 30px;
+    background: var(--papel);
+    border: 1px solid #d8bf93;
+    box-shadow: 6px 8px 0 #4a241222;
+    transform: rotate(-2deg);
+}
+body > p strong { color: var(--roca); text-transform: uppercase; letter-spacing: .06em; }
+p.id { font-style: italic; color: #8a6a4f; }
+
+/* ---------- Error ---------- */
+.error {
+    max-width: 520px;
+    padding: 14px 18px;
+    font-weight: 700;
+    color: #5a1010;
+    background: #ffe3d6;
+    border: 2px solid #b02a2a;
+    border-left-width: 10px;
+    border-radius: var(--radio);
+}
+
+/* ---------- Móvil ---------- */
+@media (max-width: 480px) {
+    body { padding: 24px 14px 50px; }
+    body > form:has(input[name="q"]) { flex-direction: column; align-items: stretch; }
+    .galeria { grid-template-columns: repeat(2, 1fr); gap: 20px 12px; }
+    .tarjeta img { height: 140px; }
+}
